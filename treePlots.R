@@ -1,0 +1,11 @@
+par(mfrow = c(2,1))
+stNum = read.csv("data/stNum.csv", header = FALSE)
+names(stNum) = c("street", "count")
+aggSt = aggregate(stNum, by = list(stNum$street), FUN = sum)
+plot(aggSt$Group.1, aggSt$count, type = 'l')
+axis(1, , at = seq(20,220, by = 20))
+
+aveNum = read.csv("data/aveNum.csv", header = FALSE)
+names(aveNum) = c("street", "count")
+aggAve = aggregate(aveNum, by = list(aveNum$street), FUN = sum)
+plot(aggAve$Group.1, aggAve$count, type = 'l')
